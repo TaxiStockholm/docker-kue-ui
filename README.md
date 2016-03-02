@@ -3,7 +3,7 @@
 
 ## Run
 
-    $ docker run -it -p 5000:5000 --link redis -e KUE_PREFIX=queue christophwitzko/kue-ui
+    $ docker run -it -p 5000:5000 --link redis -e KUE_PREFIX=queue -e PORT=5000 iteamdev/docker-kue-ui
 
 ## Licence
 
