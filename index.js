@@ -5,4 +5,4 @@ kue.createQueue({
   redis: process.env.REDIS_URL || 'redis://redis:6379'
 })
 
-kue.app.listen(5000)
+kue.app.listen(process.env.PORT)
