@@ -22,6 +22,8 @@
     "standard": "^6.0.4"
   },
   "dependencies": {
-    "kue": "^0.10.5"
+    "express": "^4.13.4",
+    "kue": "^0.10.5",
+    "kue-ui": "^0.1.0"
   }
 }
