@@ -1,16 +1,8 @@
-// const kue = require('kue')
-
-// kue.createQueue({
-//   prefix: process.env.KUE_PREFIX,
-//   redis: process.env.REDIS_URL || 'redis://redis:6379'
-// })
-
-// kue.app.listen(5000)
-
 const kue = require('kue')
 const express = require('express')
 const ui = require('kue-ui')
 const app = express()
+const port = process.env.PORT || 7000
 
 // connect kue to appropriate redis, or omit for default localhost
 kue.createQueue({
@@ -28,9 +20,9 @@ app.use('/api', kue.app)
 // Mount UI
 app.use('/', ui.app)
 
-app.listen(3000, (err, data) => {
+app.listen(port, (err, data) => {
   if (err) {
     console.log('error', err)
   }
-  console.log('listening on port', 3000)
+  console.log('listening on port', port)
 })
