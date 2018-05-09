@@ -4,6 +4,8 @@ services:
     environment:
       - 'redis__sentinels=sentinel-1,sentinel-2,sentinel-3'
     build: .
+    ports:
+      - 7000:7000
   master:
     image: redis:3
     ports:
