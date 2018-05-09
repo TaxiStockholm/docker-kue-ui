@@ -12,7 +12,8 @@
     "type": "git",
     "url": "git+https://github.com/christophwitzko/docker-kue-ui.git"
   },
-  "author": "Christoph Witzko <npm@christophwitzko.com> (http://christophwitzko.com/)",
+  "author":
+    "Christoph Witzko <npm@christophwitzko.com> (http://christophwitzko.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/christophwitzko/docker-kue-ui/issues"
@@ -23,7 +24,9 @@
   },
   "dependencies": {
     "express": "^4.13.4",
+    "ioredis": "^3.2.2",
     "kue": "^0.10.5",
-    "kue-ui": "^0.1.0"
+    "kue-ui": "^0.1.0",
+    "nconf": "^0.10.0"
   }
 }

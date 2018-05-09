@@ -3,10 +3,17 @@ const express = require('express')
 const ui = require('kue-ui')
 const app = express()
 const port = process.env.PORT || 7000
+const getRedisConfig = require('./lib/getRedisConfig')
+const Redis = require('ioredis')
+console.log(getRedisConfig())
 
 // connect kue to appropriate redis, or omit for default localhost
 kue.createQueue({
-  redis: process.env.REDIS_URL || 'redis://docker:6379'
+  redis: {
+    createClientFactory: () => {
+      return new Redis(getRedisConfig())
+    }
+  }
 })
 
 ui.setup({
