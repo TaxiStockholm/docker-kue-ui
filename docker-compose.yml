@@ -1,0 +1,47 @@
+version: '3'
+services:
+  kue-ui:
+    environment:
+      - 'redis__sentinels=sentinel-1,sentinel-2,sentinel-3'
+    build: .
+    ports:
+      - 7000:7000
+  master:
+    image: redis:3
+    ports:
+      - 6379:6379
+  slave:
+    image: redis:3
+    command: redis-server --slaveof master 6379
+    links:
+      - master
+  sentinel-1:
+    image: taxistockholm/redis-sentinel:latest
+    environment:
+      - SENTINEL_DOWN_AFTER=5000
+      - SENTINEL_FAILOVER=5000
+    links:
+      - master
+      - slave
+    ports:
+      - 26379:26379
+  sentinel-2:
+    image: taxistockholm/redis-sentinel:latest
+    environment:
+      - SENTINEL_DOWN_AFTER=5000
+      - SENTINEL_FAILOVER=5000
+    links:
+      - master
+      - slave
+    ports:
+      - 26380:26379
+  sentinel-3:
+    image: taxistockholm/redis-sentinel:latest
+    environment:
+      - SENTINEL_DOWN_AFTER=5000
+      - SENTINEL_FAILOVER=5000
+    links:
+      - master
+      - slave
+    ports:
+      - 26381:26379

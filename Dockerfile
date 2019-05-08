@@ -1,9 +1,11 @@
-FROM node:4.2
+FROM node:8.1
 
 WORKDIR /src
-ADD . .
+COPY ./lib ./lib
+ADD ./index.js ./index.js
+ADD ./package.json ./package.json
+ADD ./package-lock.json ./package-lock.json
 
 RUN npm install --production
 
-EXPOSE 5000
 CMD ["npm", "start"]
